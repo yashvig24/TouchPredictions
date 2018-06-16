@@ -1,0 +1,57 @@
+TouchML Database Structure:
+
+Table: trials
+
+Fields:
+
+id: prmary key of this table
+
+trialMode: id of the task (1-8), randomised between participants by a latin square design; values:
+1: crosshair target, thumb input
+2: crosshair target, index finger input
+3: key sized target, thumb input
+4: key sized target, index finger input
+5: app sized target, thumb input
+6: app sized target, index finger input
+7: full width target, thumb input
+8: full width target, index finger input
+
+sessionIndex: indicates whether this trial was part of a user's first or second session - 0 (first session), 1 (second session)
+
+inputStyle: the hand posture in this trial - 0 (thumb input), 1 (index finger input)
+
+surfaceX: x-offset of the targeting area on the screen in pixels (can be ignored - always 0 here)
+surfaceY: y-offset of the targeting area on the screen in pixels (can be ignored - always 0 here)
+
+surfaceW: width of targeting area in pixels (always 1080 here) - this value is the horizontal resolution of the Nexus 5
+surfaceH: height of targeting area in pixels (always 1701 here) - this value is the vertical resolution of the Nexus 5 minus the space needed for the phone's OS softkeys and status bar
+
+screenW: width of whole screen in pixels (Nexus 5: 1080)
+screenH: height of whole screen in pixels (Nexus 5: 1776) - this value is the vertical resolution of the Nexus 5 minus the space needed for the phone's OS softkeys
+
+subjectID: id of the participant who performed this trial
+
+
+
+
+Table: taps
+
+Fields:
+
+targetX: x coordinate of the target centre in pixels
+targetY: y coordinate of the target centre in pixels
+targetW: width of the target in pixels
+targetH: height of the target in pixels
+
+touchDownX: x coordinate of touch event at touch down in pixels
+touchDownY: y coordinate of touch event at touch down in pixels
+
+touchUpX: x coordinate of touch event at touch up in pixels
+touchUpY: y coordinate of touch event at touch up in pixels
+
+hit: flag indicating whether the touch up fell inside the target rectangle - 0 (miss), 1 (hit); do not interprete this value for crosshair targets (as they have no visible bounding box)
+
+timeDown: time at touch down, in milliseconds since the start of the trial
+timeDown: time at touch up, in milliseconds since the start of the trial
+
+trialID: id of the trial (i.e. row in table trials), to which this touch belongs
